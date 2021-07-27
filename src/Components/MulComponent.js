@@ -6,30 +6,30 @@ import CardContent from '@material-ui/core/CardContent';
 
 function Mulcomponent() {
 
-  const { inputs, mulVal, setMulVal, handler, classes } = useContext(MathContext)
+  const { inputs, mulVal, setMulVal, handler, classes, pageStrings } = useContext(MathContext)
 
   return (
     <Card className={classes.root}>
       <Grid container>
         <Grid item lg={12}>
-          <TextField id="filled-basic" label="Input 1" variant="filled" name="in3" onChange={(e) => handler(e)} />
+          <TextField id="filled-basic" label={pageStrings.input1} variant="filled" name="in3" onChange={(e) => handler(e)} />
         </Grid>
         <Grid item lg={12}>
-          <TextField id="filled-basic" label="Input 2" variant="filled" name="in4" onChange={(e) => handler(e)} />
+          <TextField id="filled-basic" label={pageStrings.input2} variant="filled" name="in4" onChange={(e) => handler(e)} />
         </Grid>
         <Grid item lg={12}>
 
           <Button onClick={() => { setMulVal(Number(inputs.in3) * Number(inputs.in4)) }}>
-            Multiply
+            {pageStrings.multiply}
           </Button>
           <Button onClick={() => { setMulVal('') }}>
-            Reset
+          {pageStrings.reset}
           </Button>
 
           {mulVal ? <Card className={classes.root}>
             <CardContent>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
-                Multiplication of Input 1 and Input 2
+                {pageStrings.multiplication}
               </Typography>
               <Typography variant="h5" component="h2">
                 {mulVal}
